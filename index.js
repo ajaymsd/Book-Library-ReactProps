@@ -1,87 +1,86 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM  from "react-dom";
 import "./app.css";
 
-const FirstBook={
-    img:"https://m.media-amazon.com/images/I/71LaJylkUvL._AC_UL320_.jpg",
-    title:"Wise and Otherwise",
-    author:"Sutha Murthy"
-}
-const SecondBook={
-    img:"https://m.media-amazon.com/images/I/71GbGol4p+L._AC_UL320_.jpg",
-    title:"The Room Roof",
-    author:"Ruskin Bond"
-}
-const ThirdBook={
-    img:"https://m.media-amazon.com/images/I/81i2034Lj0S._AC_UL320_.jpg",
-    title:"Train to Pakistan",
-    author:"Khushant"
-}
-const FourthBook={
-    img:"https://m.media-amazon.com/images/I/41IMpHaZpmL._AC_UL320_.jpg",
-    title:"Shantaram",
-    author:"Gregory"
-}
-const FifthBook={
-    img:"https://m.media-amazon.com/images/I/81-7rvh85jL._AC_UL320_.jpg",
-    title:"Long SIlence",
-    author:"Deshpande Shashi"
-}
-const SixthBook={
-    img:"https://m.media-amazon.com/images/I/71m4x4wunyL._AC_UL320_.jpg",
-    title:"The Guide",
-    author:"R.K Narayanan"
-}
+const Books=[
+    {
+        img:"https://m.media-amazon.com/images/I/71LaJylkUvL._AC_UL320_.jpg",
+        title:"Wise and Otherwise",
+        author:"Sutha Murthy",
+        price:"$156"
+    },
+    {
+        img:"https://m.media-amazon.com/images/I/71GbGol4p+L._AC_UL320_.jpg",
+        title:"The Room Roof",
+        author:"Ruskin Bond",
+        price:"$168"
+    },
+    {
+        img:"https://m.media-amazon.com/images/I/81i2034Lj0S._AC_UL320_.jpg",
+        title:"Train to Pakistan",
+        author:"Khushant",
+        price:"$134"
+    },
+];
+    const Books2=[{
+        img:"https://m.media-amazon.com/images/I/41IMpHaZpmL._AC_UL320_.jpg",
+        title:"Shantaram",
+        author:"Gregory",
+        price:"$100"
+    },
+    {
+        img:"https://m.media-amazon.com/images/I/81-7rvh85jL._AC_UL320_.jpg",
+        title:"Long SIlence",
+        author:"Deshpande Shashi",
+        price:"$232"
+    },
+    {
+        img:"https://m.media-amazon.com/images/I/71m4x4wunyL._AC_UL320_.jpg",
+        title:"The Guide",
+        author:"R.K Narayanan",
+        price:"$202"
+
+    }
+];
 const Booklibrary=()=>{
     return(
         <section>
         <h1>BOOK LIBRARY</h1>
         <div className="firstlist">
        
-          <Book
-           img={FirstBook.img}
-           title={FirstBook.title}
-           author={FirstBook.author}/>
-            <Book
-           img={SecondBook.img}
-           title={SecondBook.title}
-           author={SecondBook.author}/>
-            <Book
-           img={ThirdBook.img}
-           title={ThirdBook.title}
-           author={ThirdBook.author}/>
+        {Books.map((book) => {
+         const { img, title, author,price } = book;
+          return <SingleBook book={book}></SingleBook>;
+     })}
            </div>
            <div className="secondlist">
-          <Book
-           img={FourthBook.img}
-           title={FourthBook.title}
-           author={FourthBook.author}/>
-            <Book
-           img={FifthBook.img}
-           title={FifthBook.title}
-           author={FifthBook.author}/>
-            <Book
-           img={SixthBook.img}
-           title={SixthBook.title}
-           author={SixthBook.author}/>
-           </div>
+       
+       {Books2.map((book) => {
+        const { img, title, author,price } = book;
+         return <SingleBook book={book}></SingleBook>;
+    })}
+          </div>
+          
+
 
 
         </section>
-    )
+    );
 }
 
-const Book=(props)=>{
-    const{img,title,author}=props;
+const SingleBook=(props)=>{
+    const{img,title,author,price}=props.book;
     function handleAlert(){
         alert("Title:"+title)
     }
     return(
       <div className="Booklist">
         <img src={img} alt=""/>
-        <h3>TITLE:{title}</h3>
-        <h3>AUTHOR:{author}</h3>
-        <button onClick={handleAlert}>Event</button>
+        <h3>TITLE: {title}</h3>
+        <h3>AUTHOR: {author}</h3>
+        <h3 className="pri">PRICE: {price}</h3>
+        <button onClick={handleAlert}>Click to Display Title</button>
+
       </div>
     )
 }
